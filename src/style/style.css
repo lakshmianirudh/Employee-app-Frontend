@@ -182,7 +182,7 @@ border-radius: 6px;
 }
 
 table{
-    margin: 25px;
+    margin: 10px;
     border-spacing: 0px 16px;
     
     border-radius: 15px;
@@ -192,7 +192,7 @@ table{
 }
 .tablehead{
     background: #EAF9FF;
-    border-radius: 5px;
+    border-radius: 3px;
    
     
 }

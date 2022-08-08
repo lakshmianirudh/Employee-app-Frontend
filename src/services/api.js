@@ -1,9 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { getStorage } from './utils';
 
 
 export const baseApi = createApi({
   reducerPath: 'baseApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/',
+  prepareHeaders:(headers) => {
+    const token = getStorage("AuthToken");
+    if(token){
+      headers.set('authorization',`Bearer ${token}`)
+    }
+    return headers
+  },
+}),
   refetchOnMountOrArgChange : true,
   tagTypes : ['Employee'],
   endpoints: (builder) => ({
@@ -27,6 +36,13 @@ export const baseApi = createApi({
       invalidatesTags:['Employee'],
 
     }),
+   login: builder.mutation({
+    query:(payload) => ({
+      url:"employee/login",
+      method:"POST",
+      body : payload
+    }),
+   }),
     updateEmployee: builder.mutation({
       query: ({id,...payload}) => ({
         url:`employee/${id}`,
@@ -50,4 +66,4 @@ export const baseApi = createApi({
     
 
 
-export const { useGetEmployeeQuery , useCreateEmployeeMutation,useDeleteEmployeeByIdMutation,useGetEmployeeByIdQuery,useUpdateEmployeeMutation} = baseApi;
+export const { useGetEmployeeQuery , useCreateEmployeeMutation,useDeleteEmployeeByIdMutation,useGetEmployeeByIdQuery,useUpdateEmployeeMutation,useLoginMutation} = baseApi;
