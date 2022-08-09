@@ -20,7 +20,9 @@ const UpdateEmployee = () => {
     joiningDate:'',
     role:'',
     status:'',
-    departmentId:'92704119-d223-41bd-84c6-bcb2051a0c88'});
+    departmentId:'92704119-d223-41bd-84c6-bcb2051a0c88',
+    state:'',
+    district:''});
     useEffect(()=>{
         if(data?.data){
             setState(data.data)
@@ -70,12 +72,11 @@ const UpdateEmployee = () => {
                     {key:'Inactive',label:'Inactive'},
                     {key:'Probation',label:'Probation'}
                 ]} onChange={(value)=>{onChangeValue("status",value)}}/>
-                <InputField value={state.experience} id="experience" placeholder="Experience" label="Experience" />
-                <InputField value='' placeholder="Address" label="Address"/>
+               
                 
                
                
-                <div id="input">
+                {/* <div id="input">
                     <label  >Upload ID Proof
                     <br />
                     <input type="file" id="proof" name="proof" style={{display:"none"}}/>
@@ -84,7 +85,7 @@ const UpdateEmployee = () => {
                         <label className="browse" >Browse</label>
                     </div>
                 </label>
-                </div>
+                </div> */}
                 
                 </div>
                 <div id="b">

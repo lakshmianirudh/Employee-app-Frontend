@@ -21,7 +21,9 @@ const CreateEmployee = () => {
         joiningDate:'',
         role:'',
         status:'',
-        departmentId:'92704119-d223-41bd-84c6-bcb2051a0c88'
+        departmentId:'92704119-d223-41bd-84c6-bcb2051a0c88',
+        state:'',
+        district:''
     });
     useEffect(() => {
         console.log(state);
@@ -55,8 +57,8 @@ const CreateEmployee = () => {
                     {key:'Inactive',label:'Inactive'},
                     {key:'Probation',label:'Probation'}
                 ]} onChange={(value)=>{onChangeValue("status",value)}}/>
-                <InputField value={state.experience} id="experience" placeholder="Experience" label="Experience" />
-                <InputField value='' placeholder="Address" label="Address"/>
+                <InputField value={state.state} id="state" placeholder="State" label="State" onChange={(value)=>{onChangeValue("state",value)}}/>
+                <InputField value={state.district} placeholder="District" label="District" id="district" onChange={(value)=>{onChangeValue("district",value)}}/>
                 
                
                
@@ -73,7 +75,15 @@ const CreateEmployee = () => {
                 
                 </div>
                 <div id="b">
-                    <Button id="b1" label="Create" onClick={()=> {createEmployee(state);}}/>
+                    <Button id="b1" label="Create" onClick={()=> {createEmployee({
+                        name:state.name,
+                        joiningDate:state.joiningDate,
+                        role:state.role,
+                        status:state.status,
+                        departmentId:state.departmentId,
+                        employeeaddress:{state:state.state,
+                        district:state.district}
+                    });}}/>
                     <Button id="b2" label="Cancel" onClick={()=> navigate('/')}/>
                    
                     

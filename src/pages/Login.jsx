@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import InputField from "../components/InputField";
 import { useLoginMutation } from "../services/api";
 import {setStorage} from "../services/utils";
+import sideImage from "../img/side-image.png";
+import logo from "../img/kv logo.png";
 const Login = () => {
     const [login,result] = useLoginMutation();
     const navigate = useNavigate();
@@ -25,9 +27,19 @@ const Login = () => {
             });}
     
     return(
-        <><InputField value={credentials.name} id="username" placeholder="UserName" label="password" onChange={(value)=>onChangeValue("name",value)} />
-        <InputField  value={credentials.value} id="username" placeholder="Password" label="password" onChange={(value)=>onChangeValue("password",value)}/>
-        <button onClick={() => login(credentials)}>Login</button></>
+        <main className="login">
+        <div id="si">
+        <img  src={sideImage} alt="sideimage"/>
+
+        </div>
+        <div id="sh">
+        <img src={logo} alt="logo"/>
+        <InputField value={credentials.name} id="username" placeholder="UserName" label="Username" onChange={(value)=>onChangeValue("name",value)} />
+        <InputField  value={credentials.value} id="username" placeholder="Password" label="Password" onChange={(value)=>onChangeValue("password",value)}/>
+        <button id="lb" onClick={() => login(credentials)}>Login</button>
+        </div>
+        </main>
+        
     );
 }
 

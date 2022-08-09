@@ -4,6 +4,7 @@ import SideBar from "../components/Sidebar";
 import { useDeleteEmployeeByIdMutation, useGetEmployeeQuery } from "../services/api";
 import {MdOutlineAdd, MdOutlineDelete,MdOutlineEdit} from "react-icons/md";
 import EmployeeDetails from "./EmployeeDetails";
+import Logout from "../components/Logout";
 
 const EmployeeList = () => {
   const navigate = useNavigate();
@@ -16,8 +17,11 @@ const EmployeeList = () => {
         <div>
             <SideBar/>
             <main>
+            <Logout/>
+              
                 
             <section id="sec1">
+            
                 <h1 id="heading">Employee List</h1>
                 <button id="ce" onClick={() => navigate('/create')}><div id="bc"><MdOutlineAdd className="plus"/></div>< div id="ce2"><h4>Create Employee</h4></div></button>
             </section>

@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import SideBar from "../components/Sidebar";
 import {MdOutlineEdit} from "react-icons/md";
 import { useGetEmployeeByIdQuery } from "../services/api";
+import '../style/style.css';
 const EmployeeDetails = () => {
     const params = useParams();
     
@@ -23,8 +24,11 @@ const EmployeeDetails = () => {
                 <div id="d">Employee Name<br/>{data?.data?.name}</div>
                 <div id="d">Employee Id <br/>{data?.data?.id}</div>
                 <div id="d">Role<br/>{data?.data?.role}</div>
-                <div id="d">Status<br/>{data?.data?.status}</div>
+                <div id="d">Status<br/><div className={data?.data?.status}>{data?.data?.status}</div></div>
                 <div id="d">JoiningDate<br/>{data?.data?.joiningDate}</div>
+                <div id="d">State<br/>{data?.data?.employeeaddress.state}</div>
+                <div id="d">District<br/>{data?.data?.employeeaddress.district}</div>
+                
             </div>
             
             
